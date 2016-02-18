@@ -1,2 +1,2 @@
-# React-ES6-Webpack-Boilerplate
-Boilerplate for ReactJS and Webpack
+# Wikipedia Viewer
+Another project from FreeCodeCamp using ReactJS
