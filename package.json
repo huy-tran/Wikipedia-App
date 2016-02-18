@@ -1,12 +1,13 @@
 {
-  "name": "react-app",
+  "name": "wikipedia-app",
   "version": "1.0.0",
   "description": "A basic environment for ReactJS in ES6, Flux Architecture and Webpack",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack-server": "webpack-dev-server --hot --progress --colors",
+    "webpack-server": "webpack-dev-server --progress --colors",
     "web-server": "http-server -p 3000 .",
+    "deploy": "NODE_ENV=production webpack -p",
     "start": "npm run webpack-server & npm run web-server"
   },
   "keywords": [
@@ -37,9 +38,22 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "axios": "0.9.1",
+    "jquery": "2.2.0",
+    "jsonp": "0.2.0",
+    "lodash": "4.5.0",
+    "moment": "2.11.2",
     "react": "^0.14.3",
-    "react-dom": "^0.14.0",
-    "react-router-component": "^0.29.0",
-    "flux": "^2.1.1"
-  }
+    "react-dom": "^0.14.0"
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huy-tran/Wikipedia-App.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huy-tran/Wikipedia-App/issues"
+  },
+  "homepage": "https://github.com/huy-tran/Wikipedia-App#readme"
 }

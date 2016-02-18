@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: getEntrySources(['./src/entry.js']),
   output: {
@@ -5,6 +7,9 @@ module.exports = {
     filename: 'build/bundle.js'
   },
   devtool: 'eval',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     preLoaders: [
       {
