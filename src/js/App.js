@@ -23,15 +23,11 @@ export default class App extends React.Component {
     let queryUrl = this.state.url.slice(0, index  + 1) + query;
     let lastQuery = this.state.searchString;
 
-    if (lastQuery.toLowerCase() !== query.toLowerCase()) {
-      this.makeRequest(queryUrl);
-      this.setState({
-        searchString: query,
-        url: queryUrl,
-      });
-    } else {
-      return false;
-    }
+    this.makeRequest(queryUrl);
+    this.setState({
+      searchString: query,
+      url: queryUrl,
+    });
   }
 
   makeRequest(url) {
@@ -66,23 +62,12 @@ export default class App extends React.Component {
   }
 }
 
-const SearchBox = (props) => {
-  let input;
-  const setRef = (ref) => {input = ref;};
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.value) {
-      props.onSearch(input.value);
-      input.value = '';
-    }
-  };
-
-  return (
-    <form onSubmit={(e) => handleSubmit(e)} >
+const SearchBox = (props) =>
+  (
+    <form onSubmit={(e) => e.preventDefault()} >
       <input type="search" name="q" className="search"
              placeholder="Search our Wiki App..." autoComplete="off"
-             ref={(ref) => setRef(ref)}/>
+             onChange={(e) => props.onSearch(e.target.value)}/>
       <button type="submit" className="go">
         <span className="search-icon"></span>
       </button>
@@ -91,11 +76,8 @@ const SearchBox = (props) => {
       </a>
     </form>
   );
-};
 
-const RandomButton = (props) => {
-  return <button><a href={props.url} target="_blank">Lazy Typing? Get Random</a></button>;
-};
+const RandomButton = (props) => <button><a href={props.url} target="_blank">Lazy Typing? Get Random</a></button>;
 
 const ListItem = ({ pageid, title, extract, touched, length }) => {
   const readingTime = Math.round(length / WPM);
